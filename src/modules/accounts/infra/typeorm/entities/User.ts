@@ -21,6 +21,9 @@ class User {
   @CreateDateColumn()
   updated_at: Date;
 
+  @CreateDateColumn()
+  deleted_at: Date;
+
   constructor() {
     if (!this.id) {
       this.id = uuidV4();

@@ -22,6 +22,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
     this.users.push(user);
   }
 
+  updateById(data: ICreateUserDTO): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+
   async findByEmail(email: string): Promise<User> {
     return this.users.find((user) => user.email === email);
   }
