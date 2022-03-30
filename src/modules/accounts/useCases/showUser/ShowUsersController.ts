@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ShowUsersUseCase } from "./ShowUsersUseCase";
 
 
-class ShowtUsersController {
+class ShowUsersController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
@@ -16,4 +16,4 @@ class ShowtUsersController {
   }
 }
 
-export { ShowtUsersController };
+export { ShowUsersController };

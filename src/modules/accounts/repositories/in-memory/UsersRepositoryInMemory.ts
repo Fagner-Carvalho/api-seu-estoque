@@ -4,7 +4,6 @@ import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
-  users: User[] = [];
 
   async create({
     name,
@@ -39,6 +38,11 @@ class UsersRepositoryInMemory implements IUsersRepository {
   async findAll(): Promise<User[]> {
     return this.users;
   }
+
+  delete(id: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  users: User[] = [];
 }
 
 export { UsersRepositoryInMemory };

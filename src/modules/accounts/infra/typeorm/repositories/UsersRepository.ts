@@ -30,14 +30,14 @@ class UsersRepository implements IUsersRepository {
   }
 
   async updateById(
-    id: string, 
+    id: string,
     {
       name,
       email,
       password,
     }: ICreateUserDTO
   ): Promise<void> {
-    await this.repository.update(id, { name, email });
+    await this.repository.update(id, { name, email, password });
   }
 
   async findByEmail(email: string): Promise<User> {
@@ -54,6 +54,11 @@ class UsersRepository implements IUsersRepository {
     const user = await this.repository.find();
     return user;
   }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.softDelete(id);
+  }
+
 }
 
 export { UsersRepository };
