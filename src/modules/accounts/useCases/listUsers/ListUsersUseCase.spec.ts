@@ -18,7 +18,6 @@ describe("List Users", () => {
     });
 
     const users = await listUsersUseCase.execute();
-    console.log(users);
 
     expect(users).toEqual([user])
   });
