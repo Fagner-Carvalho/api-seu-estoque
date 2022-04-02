@@ -17,6 +17,7 @@ export class CreateCategories1647111886162 implements MigrationInterface {
           {
             name: "descripton",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "created_at",
@@ -42,4 +43,4 @@ export class CreateCategories1647111886162 implements MigrationInterface {
     await queryRunner.dropTable("categories");
   }
 }
-  
+
