@@ -60,7 +60,13 @@ class ItemsRepository implements IItemsRepository {
   }
 
   async findById(id: string): Promise<Item> {
-    const item = await this.repository.findOne(id);
+    // const item = await this.repository.findOne(id);
+    const item = await this.repository
+      .createQueryBuilder("item")
+      .innerJoinAndSelect("item.category", "category")
+      .innerJoinAndSelect("item.unitMeasure", "unitMeasure")
+      .where({ id })
+      .getOne()
     return item;
   }
 
