@@ -9,7 +9,7 @@ export class CreatePermissions1647111675380 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "user_id",

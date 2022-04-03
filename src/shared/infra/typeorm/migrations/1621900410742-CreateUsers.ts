@@ -8,7 +8,7 @@ export class CreateUsers1621900410742 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "name",
@@ -22,7 +22,7 @@ export class CreateUsers1621900410742 implements MigrationInterface {
           {
             name: "password",
             type: "varchar",
-            
+
           },
           {
             name: "created_at",

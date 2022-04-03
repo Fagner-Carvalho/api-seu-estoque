@@ -65,7 +65,12 @@ class ItemsRepository implements IItemsRepository {
   }
 
   async findAll(): Promise<Item[]> {
-    const item = await this.repository.find();
+    const item = await this.repository
+      .createQueryBuilder("item")
+      .innerJoinAndSelect("item.category", "category")
+      .innerJoinAndSelect("item.unitMeasure", "unitMeasure")
+      .getMany()
+
     return item;
   }
 

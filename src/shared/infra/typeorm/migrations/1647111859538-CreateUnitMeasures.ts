@@ -8,7 +8,7 @@ export class CreateUnitMeasures1647111859538 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "name",

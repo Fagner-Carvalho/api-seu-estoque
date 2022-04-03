@@ -8,7 +8,7 @@ export class CreateMenus1647111711291 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "name",
@@ -38,4 +38,3 @@ export class CreateMenus1647111711291 implements MigrationInterface {
     await queryRunner.dropTable("menus");
   }
 }
-  

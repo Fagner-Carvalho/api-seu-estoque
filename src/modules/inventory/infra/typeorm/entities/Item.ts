@@ -1,5 +1,7 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Category } from "./category";
+import { UnitMeasure } from "./unitMeasure";
 
 @Entity("items")
 class Item {
@@ -29,6 +31,14 @@ class Item {
 
   @DeleteDateColumn()
   deleted_at: Date;
+
+  @OneToOne(() => Category)
+  @JoinColumn({ name: "category_id" })
+  category: Category
+
+  @OneToOne(() => UnitMeasure)
+  @JoinColumn({ name: "unit_measure_id" })
+  unitMeasure: UnitMeasure
 
   constructor() {
     if (!this.id) {

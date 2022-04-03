@@ -8,7 +8,7 @@ export class CreateItems1647111731966 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
           },
           {
             name: "name",
