@@ -4,13 +4,12 @@ import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
-  users: User[] = [];
 
   async create({
     name,
     password,
     email,
-  }: ICreateUserDTO): Promise<void> {
+  }: ICreateUserDTO): Promise<User> {
     const user = new User();
 
     Object.assign(user, {
@@ -20,6 +19,12 @@ class UsersRepositoryInMemory implements IUsersRepository {
     });
 
     this.users.push(user);
+
+    return user
+  }
+
+  updateById(id: string, data: ICreateUserDTO): Promise<void> {
+    throw new Error("Method not implemented.");
   }
 
   async findByEmail(email: string): Promise<User> {
@@ -29,6 +34,15 @@ class UsersRepositoryInMemory implements IUsersRepository {
   async findById(id: string): Promise<User> {
     return this.users.find((user) => user.id === id);
   }
+
+  async findAll(): Promise<User[]> {
+    return this.users;
+  }
+
+  delete(id: string): Promise<void> {
+    throw new Error("Method not implemented.");
+  }
+  users: User[] = [];
 }
 
 export { UsersRepositoryInMemory };

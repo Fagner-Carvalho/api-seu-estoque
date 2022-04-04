@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("users")
-class User {
+@Entity("unit_measures")
+class UnitMeasure {
   @PrimaryColumn()
   id: string;
 
@@ -10,10 +10,7 @@ class User {
   name: string;
 
   @Column()
-  email: string;
-
-  @Column()
-  password: string;
+  abbreviation: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -31,4 +28,4 @@ class User {
   }
 }
 
-export { User };
+export { UnitMeasure };
