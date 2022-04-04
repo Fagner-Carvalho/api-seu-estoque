@@ -102,4 +102,4 @@ async function create() {
   await connection.close;
 };
 
-create().then(() => console.log("Units created!"));
+create().then(() => console.log("Categories created!"));
