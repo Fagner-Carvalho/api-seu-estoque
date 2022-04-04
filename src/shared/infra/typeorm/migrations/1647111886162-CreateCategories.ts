@@ -15,7 +15,7 @@ export class CreateCategories1647111886162 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "descripton",
+            name: "description",
             type: "varchar",
             isNullable: true,
           },
