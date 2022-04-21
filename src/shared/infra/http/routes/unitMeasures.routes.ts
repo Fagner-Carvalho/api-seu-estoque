@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { ListUnitMeasuresController } from "@modules/inventory/useCases/listUnitMeasures/ListUnitMeasuresController";
+import { ListUnitMeasuresController } from "@modules/inventory/useCases/unitMeasure/listUnitMeasures/ListUnitMeasuresController";
 
 const unitMeasuresRoutes = Router();
 
