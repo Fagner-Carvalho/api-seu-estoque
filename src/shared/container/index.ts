@@ -8,6 +8,8 @@ import { ICategoriesRepository } from "@modules/inventory/repositories/ICategori
 import { CategoriesRepository } from "@modules/inventory/infra/typeorm/repositories/CategoriesRepository";
 import { IUnitMeasuresRepository } from "@modules/inventory/repositories/IUnitMeasuresRepository";
 import { UnitMeasuresRepository } from "@modules/inventory/infra/typeorm/repositories/UnitMeasuresRepository";
+import { ISuppliersRepository } from "@modules/suppliers/repositories/ISuppliersRepository";
+import { SuppliersRepository } from "@modules/suppliers/infra/typeorm/repositories/SuppliersRepository";
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
@@ -27,4 +29,9 @@ container.registerSingleton<ICategoriesRepository>(
 container.registerSingleton<IUnitMeasuresRepository>(
   "UnitMeasuresRepository",
   UnitMeasuresRepository
+);
+
+container.registerSingleton<ISuppliersRepository>(
+  "SuppliersRepository",
+  SuppliersRepository
 );

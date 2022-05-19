@@ -10,9 +10,9 @@ class ShowCategoryUseCase {
   ) { }
 
   async execute(id: string): Promise<Category> {
-    const item = await this.categoriesRepository.findById(id)
+    const category = await this.categoriesRepository.findById(id)
 
-    return item;
+    return category;
   };
 };
 
