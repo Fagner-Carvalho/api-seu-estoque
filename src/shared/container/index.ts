@@ -10,6 +10,8 @@ import { IUnitMeasuresRepository } from "@modules/inventory/repositories/IUnitMe
 import { UnitMeasuresRepository } from "@modules/inventory/infra/typeorm/repositories/UnitMeasuresRepository";
 import { ISuppliersRepository } from "@modules/suppliers/repositories/ISuppliersRepository";
 import { SuppliersRepository } from "@modules/suppliers/infra/typeorm/repositories/SuppliersRepository";
+import { IInventoryMovimentsRepository } from "@modules/inventory/repositories/IInventoryMovimentRepository";
+import { InventoryMovimentsRepository } from "@modules/inventory/infra/typeorm/repositories/InventoryMovimentsRepository";
 
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
@@ -34,4 +36,9 @@ container.registerSingleton<IUnitMeasuresRepository>(
 container.registerSingleton<ISuppliersRepository>(
   "SuppliersRepository",
   SuppliersRepository
+);
+
+container.registerSingleton<IInventoryMovimentsRepository>(
+  "InventoryMovimentsRepository",
+  InventoryMovimentsRepository
 );
