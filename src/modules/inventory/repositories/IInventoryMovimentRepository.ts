@@ -8,6 +8,8 @@ interface IInventoryMovimentsRepository {
   findById(id: string): Promise<InventoryMoviment>;
   findAll(): Promise<InventoryMoviment[]>;
   delete(id: string): Promise<void>;
+  reportInventoryValuePerItem(): Promise<[]>;
+  reportInventoryQuantity(): Promise<[]>;
 }
 
 export { IInventoryMovimentsRepository };

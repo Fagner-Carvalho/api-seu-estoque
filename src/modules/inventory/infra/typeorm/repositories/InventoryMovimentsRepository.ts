@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, getManager } from "typeorm";
 
 import { InventoryMoviment } from "@modules/inventory/infra/typeorm/entities/inventoryMoviment";
 import { IInventoryMovimentsRepository } from "@modules/inventory/repositories/IInventoryMovimentRepository";
@@ -82,6 +82,86 @@ class InventoryMovimentsRepository implements IInventoryMovimentsRepository {
 
   async delete(id: string): Promise<void> {
     await this.repository.softDelete(id);
+  }
+
+  async reportInventoryValuePerItem(): Promise<[]> {
+    const entityManager = getManager();
+    const resultQuery = await entityManager.query(`
+    select 
+      i."name",
+      CAST(im_a.total_price - im_b.total_price AS FLOAT) as value
+    from 
+      items i
+      inner join (
+        select
+          item_id,
+          sum(total_price) as total_price 
+        from
+          inventory_movements
+        where
+          "type_Moviment" = 'entry'
+          and deleted_at is null
+        group by
+          item_id) as im_a on im_a.item_id = i.id
+      inner join (
+        select
+          item_id,
+          sum(total_price) as total_price 
+        from
+          inventory_movements
+        where
+          "type_Moviment" = 'output'
+          and deleted_at is null
+        group by
+          item_id) as im_b on im_b.item_id = i.id;
+    `,);
+
+    return resultQuery;
+  }
+
+  async reportInventoryQuantity(): Promise<[]> {
+    const entityManager = getManager();
+    const resultQuery = await entityManager.query(`
+    select
+      name,
+      value,
+      percentageMinimumInventory
+    from
+    (
+      select 
+            i."name",
+            CAST(im_a.quantity - im_b.quantity AS FLOAT) as value,
+            (CAST(im_a.quantity - im_b.quantity AS FLOAT) * 100 / i.minimum_inventory) - 100 as percentageMinimumInventory
+          from 
+            items i
+            inner join (
+              select
+                item_id,
+                sum(quantity) as quantity 
+              from
+                inventory_movements
+              where
+                "type_Moviment" = 'entry'
+                and deleted_at is null
+              group by
+                item_id) as im_a on im_a.item_id = i.id
+            inner join (
+              select
+                item_id,
+                sum(quantity) as quantity 
+              from
+                inventory_movements
+              where
+                "type_Moviment" = 'output'
+                and deleted_at is null
+              group by
+                item_id) as im_b on im_b.item_id = i.id
+    ) as inventory_quantity
+    order by
+      percentageMinimumInventory asc;
+    `,);
+
+    return resultQuery;
   }
 
 }
