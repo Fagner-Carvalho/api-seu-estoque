@@ -1,6 +1,6 @@
-module.export  = {
+module.exports  = {
   presets: [
-    ["@babel/preset-env", { target: { node: "current"} }],
+    ["@babel/preset-env", { targets: { node: "current"} }],
     "@babel/preset-typescript",
   ],
   plugins:[
@@ -17,7 +17,7 @@ module.export  = {
       }
     ],
     "babel-plugin-transform-typescript-metadata",
-    ["@babel/plugin-proposal-decorators", { legancy: true }],
+    ["@babel/plugin-proposal-decorators", { legacy: true }],
     ["@babel/plugin-proposal-class-properties", { loose: true }],
   ],
 }
