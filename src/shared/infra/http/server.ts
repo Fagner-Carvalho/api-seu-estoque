@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import cors from 'cors';
+import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import * as swaggerUi from "swagger-ui-express";
@@ -39,3 +39,4 @@ app.use(
 );
 
 app.listen("3333", () => console.log("Server is running!"));
+ 

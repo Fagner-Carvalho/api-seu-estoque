@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { CreateItemController } from "@modules/inventory/useCases/createItem/CreateItemController";
-import { ListItemsController } from "@modules/inventory/useCases/listItems/ListItemsController";
-import { UpdateItemController } from "@modules/inventory/useCases/updateItem/UpdateItemController";
-import { DeleteItemController } from "@modules/inventory/useCases/deleteItem/DeleteItemController";
-import { ShowItemController } from "@modules/inventory/useCases/showItem/ShowItemController";
+import { CreateItemController } from "@modules/inventory/useCases/item/createItem/CreateItemController";
+import { ListItemsController } from "@modules/inventory/useCases/item/listItems/ListItemsController";
+import { UpdateItemController } from "@modules/inventory/useCases/item/updateItem/UpdateItemController";
+import { DeleteItemController } from "@modules/inventory/useCases/item/deleteItem/DeleteItemController";
+import { ShowItemController } from "@modules/inventory/useCases/item/showItem/ShowItemController";
 
 const itemsRoutes = Router();
 
